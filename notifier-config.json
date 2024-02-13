@@ -1,0 +1,7 @@
+{
+    "CONFIG": {
+        "WEBHOOK": "",
+        "SPEED": 5,
+        "PING": "<@&>"
+    }
+}
