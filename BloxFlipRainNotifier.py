@@ -5,7 +5,7 @@ made_by = "coxy.57"
 import http.client, requests, json, time
 from colorama import Fore, Style
 
-print(Fore.LIGHTBLACK_EX, "[ Started!]", Style.RESET_ALL, flush=True)
+print(Fore.LIGHTBLACK_EX, "[Started!]", Style.RESET_ALL, flush=True)
 
 # notifier-config.json
 with open("notifier-config.json", "r") as f:
