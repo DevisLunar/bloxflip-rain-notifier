@@ -29,7 +29,7 @@ def active():
     conn.request("GET", "/chat/history", headers=headers)
     return json.loads(conn.getresponse().read().decode())['rain']
 
-while 1:
+while True:
     rain = active()
     if rain['active']:
         add = rain['duration'] + rain['created']
