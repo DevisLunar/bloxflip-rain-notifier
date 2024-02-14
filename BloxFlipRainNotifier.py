@@ -16,7 +16,7 @@ with open("notifier-config.json", "r") as f:
         time_sleep_every_loop = config['CONFIG']['SPEED']
         ping = config['CONFIG']['PING']
     except:
-        print(Fore.LIGHTRED_EX, "[Error while reading bytes!]", Style.RESET_ALL, flush=True)
+        exit(Fore.LIGHTRED_EX, "[Error while reading bytes!]", Style.RESET_ALL)
 
 def active():
     # headers & api.blox.flip conn
