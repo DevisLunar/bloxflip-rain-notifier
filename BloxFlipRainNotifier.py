@@ -5,7 +5,7 @@ made_by = "coxy.57"
 import http.client, requests, json, time
 from colorama import Fore, Style
 
-print(Fore.LIGHTBLACK_EX, "[Started!]", Style.RESET_ALL, flush=True)
+print(Fore.LIGHTBLACK_EX, ">> [Started!]", Style.RESET_ALL, flush=True)
 
 # notifier-config.json
 with open("notifier-config.json", "r") as f:
@@ -16,7 +16,7 @@ with open("notifier-config.json", "r") as f:
         time_sleep_every_loop = config['CONFIG']['SPEED']
         ping = config['CONFIG']['PING']
     except:
-        exit(Fore.LIGHTRED_EX, "[Error while reading bytes!]", Style.RESET_ALL)
+        exit(Fore.LIGHTRED_EX, ">> [Error while reading bytes!]", Style.RESET_ALL)
 
 def active():
     # headers & api.blox.flip conn
