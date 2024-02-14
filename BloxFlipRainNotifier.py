@@ -16,7 +16,8 @@ with open("notifier-config.json", "r") as f:
         time_sleep_every_loop = config['CONFIG']['SPEED']
         ping = config['CONFIG']['PING']
     except:
-        exit(Fore.LIGHTRED_EX, ">> [Error while reading bytes!]", Style.RESET_ALL)
+        print(Fore.LIGHTRED_EX, ">> [Error while reading bytes!]", Style.RESET_ALL, flush=True)
+        exit(0)
 
 def active():
     # headers & api.blox.flip conn
@@ -29,6 +30,7 @@ def active():
     conn.request("GET", "/chat/history", headers=headers)
     return json.loads(conn.getresponse().read().decode())['rain']
 
+# loop
 while True:
     rain = active()
     if rain['active']:
@@ -37,8 +39,7 @@ while True:
         duration = round(dur)
         conv = (duration/(1000*60))%60
         time_to_sleep = (conv*60+10)
-        rblxid = requests.post(f"https://users.roblox.com/v1/usernames/users", json={"usernames": [rain['host']]}, verify=True).json()['data'][0]['id']
-        # data
+        rblxid = requests.post(f"https://users.roblox.com/v1/usernames/users", json={"usernames": [rain['host']]}, verify=True).json()['data'][0]['id'] 
         data = {
             "content": ping,
             "username": "Rain Notifier"
@@ -52,6 +53,7 @@ while True:
                 }
             }
         ]
+        # webhook send
         r = requests.post(webhook, json=data)
         time.sleep(time_to_sleep)
     time.sleep(time_sleep_every_loop)
