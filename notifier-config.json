@@ -3,6 +3,6 @@
         "WEBHOOK": "",
         "SPEED": 5,
         "PING": "<@&>",
-        "SSL": True
+        "SSL": true
     }
 }
