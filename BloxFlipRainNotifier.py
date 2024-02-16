@@ -15,7 +15,7 @@ with open("notifier-config.json", "r") as f:
         webhook = config['CONFIG']['WEBHOOK']
         time_sleep_every_loop = config['CONFIG']['SPEED']
         ping = config['CONFIG']['PING']
-        ssl = config['SSL']
+        ssl = config['CONFIG']['SSL']
     except:
         print(Fore.LIGHTRED_EX, ">> [Error while reading bytes!]", Style.RESET_ALL, flush=True)
         exit(0)
