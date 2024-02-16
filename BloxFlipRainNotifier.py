@@ -15,6 +15,7 @@ with open("notifier-config.json", "r") as f:
         webhook = config['CONFIG']['WEBHOOK']
         time_sleep_every_loop = config['CONFIG']['SPEED']
         ping = config['CONFIG']['PING']
+        ssl = config['SSL']
     except:
         print(Fore.LIGHTRED_EX, ">> [Error while reading bytes!]", Style.RESET_ALL, flush=True)
         exit(0)
@@ -39,7 +40,7 @@ while True:
         duration = round(dur)
         conv = (duration/(1000*60))%60
         time_to_sleep = (conv*60+10)
-        rblxid = requests.post(f"https://users.roblox.com/v1/usernames/users", json={"usernames": [rain['host']]}).json()['data'][0]['id'] 
+        rblxid = requests.post(f"https://users.roblox.com/v1/usernames/users", json={"usernames": [rain['host']]}, verify=ssl).json()['data'][0]['id'] 
         data = {
             "content": ping,
             "username": "Rain Notifier"
@@ -49,7 +50,7 @@ while True:
             "description" : f"A rain has been started!\n**Host**: {rain['host']}\n**Rain Amount**: {rain['prize']}\n**Expiration**: <t:{duration}:R>\n**Hop on [BloxFlip](https://bloxflip.com) to participate in this chat rain!**",
             "title" : "Rain Notifier",
             "thumbnail": {
-                "url": requests.get(f"https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds={rblxid}&size=50x50&format=Png&isCircular=false").json()['data'][0]['imageUrl']
+                "url": requests.get(f"https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds={rblxid}&size=50x50&format=Png&isCircular=false", verify=ssl).json()['data'][0]['imageUrl']
                 }
             }
         ]
