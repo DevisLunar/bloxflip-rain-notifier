@@ -2,6 +2,7 @@
     "CONFIG": {
         "WEBHOOK": "",
         "SPEED": 5,
-        "PING": "<@&>"
+        "PING": "<@&>",
+        "SSL": True
     }
 }
