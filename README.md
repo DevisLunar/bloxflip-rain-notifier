@@ -1,4 +1,4 @@
-# BloxFlipNotifier 🌧️
+# BloxFlipNotifier 🌧️🧸
 
 made_by = "kellyhated"
 
