@@ -20,7 +20,7 @@ with open("notifier-config.json", "r") as f:
         exit(0)
 
 def active():
-    # headers & api.blox.flip conn
+    # headers & api.bloxflip.com conn
     headers = {
         "Referer": "https://bloxflip.com/",
         "Content-Type": "application/x-www-form-urlencoded",
