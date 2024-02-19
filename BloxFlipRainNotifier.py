@@ -8,9 +8,10 @@ from colorama import Fore, Style
 print(Fore.LIGHTGREEN_EX, ">> [Started!]", Style.RESET_ALL, flush=True)
 
 # notifier-config.json
-with open("notifier-config.json", "r") as file:
+with open("notifier-config.json", "r") as f:
     try:
-        config = json.load(file)
+        file = f.read()
+        config = json.loads(file)
         webhook = config['CONFIG']['WEBHOOK']
         time_sleep_every_loop = config['CONFIG']['SPEED']
         ping = config['CONFIG']['PING']
