@@ -1,7 +1,7 @@
 made_by = "kellyhated"
 made_by = "coxy.57"
 
-# libraries
+# modules
 import http.client, requests, json, time
 from colorama import Fore, Style
 
