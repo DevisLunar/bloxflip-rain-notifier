@@ -8,9 +8,9 @@ from colorama import Fore, Style
 print(Fore.LIGHTBLACK_EX, "[Notifier started!]\n=====", Style.RESET_ALL, flush=True)
 
 # notifier-config.json
-with open("notifier-config.json", "r") as f:
+with open("notifier-config.json", "r") as file:
     try:
-        file = f.read()
+        file = file.read()
         config = json.loads(file)
     except:
         print(Fore.LIGHTRED_EX, "[Error while reading bytes!]\n=====", Style.RESET_ALL, flush=True)
