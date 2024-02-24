@@ -5,7 +5,7 @@ made_by = "coxy.57"
 import http.client, requests, json, time
 from colorama import Fore, Style
 
-print(Fore.LIGHTBLACK_EX, "[Notifier started!]\n=====", Style.RESET_ALL, flush=True)
+print(Fore.LIGHTBLACK_EX, "╰┈➤[Notifier started!]", Style.RESET_ALL, flush=True)
 
 # notifier-config.json
 with open("notifier-config.json", "r") as f:
@@ -13,7 +13,7 @@ with open("notifier-config.json", "r") as f:
         file = f.read()
         config = json.loads(file)
     except:
-        print(Fore.LIGHTRED_EX, "[Error while reading bytes!]\n=====", Style.RESET_ALL, flush=True)
+        print(Fore.LIGHTRED_EX, "╰┈➤[Error while reading bytes!]", Style.RESET_ALL, flush=True)
         exit(0)
 
 # keys
