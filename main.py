@@ -12,13 +12,15 @@ with open("notifier-config.json", "r") as f:
     try:
         file = f.read()
         config = json.loads(file)
-        webhook = config['CONFIG']['WEBHOOK']
-        time_sleep_every_loop = config['CONFIG']['SPEED']
-        ping = config['CONFIG']['PING']
-        ssl = config['CONFIG']['SSL']
     except:
         print(Fore.LIGHTRED_EX, "[Error while reading bytes!]\n=====", Style.RESET_ALL, flush=True)
         exit(0)
+
+# keys
+webhook = config['CONFIG']['WEBHOOK']
+time_sleep_every_loop = config['CONFIG']['SPEED']
+ping = config['CONFIG']['PING']
+ssl = config['CONFIG']['SSL']
 
 def active():
     # headers & api.bloxflip.com conn
