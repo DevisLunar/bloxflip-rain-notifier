@@ -7,7 +7,7 @@ import http.client, requests, json, time
 from colorama import Fore, Style
 
 
-print(Fore.LIGHTRED_EX, """   ______  
+print(Fore.LIGHTCYAN_EX, """   ______  
   (_____ \ 
  _ _____) )
 (_|_____ ( 
