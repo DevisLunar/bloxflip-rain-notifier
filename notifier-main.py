@@ -13,10 +13,10 @@ print(Fore.LIGHTCYAN_EX, """   ______
 (_|_____ ( 
  _ _____) )
 (_|______/ 
-           \n╰┈➤bloxflip-rain-notifier notifier!""", Style.RESET_ALL, flush=True)
+           \n╰┈➤bloxflip-rain-notifier started!""", Style.RESET_ALL, flush=True)
 
 
-# notifier-config.json
+# notifier-config.json & setup
 f = open("notifier-config.json", "r")
 try:
     config = json.load(f)
@@ -25,8 +25,6 @@ except:
     exit(0)
 f.close()
 
-
-# setup
 webhook = config['CONFIG']['WEBHOOK']
 time_sleep_every_loop = config['CONFIG']['SPEED']
 ping = config['CONFIG']['PING']
