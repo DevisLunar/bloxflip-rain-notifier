@@ -38,6 +38,7 @@ def active():
     conn.request("GET", "/chat/history", headers=headers)
     return json.loads(conn.getresponse().read().decode())['rain']
 
+
 # loop
 while True:
     rain = active()
@@ -62,7 +63,7 @@ while True:
             }
         ]
         # webhook send
-        r = requests.post(webhook, json=data)
+        r = requests.post(webhook, json=data, verify=ssl)
         time.sleep(time_to_sleep)
     time.sleep(time_sleep_every_loop)
               
