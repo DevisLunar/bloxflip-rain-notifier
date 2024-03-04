@@ -7,7 +7,13 @@ import http.client, requests, json, time
 from colorama import Fore, Style
 
 
-print(Fore.LIGHTRED_EX, "╰┈➤notifier started!", Style.RESET_ALL, flush=True)
+print(Fore.LIGHTRED_EX, """   ______  
+  (_____ \ 
+ _ _____) )
+(_|_____ ( 
+ _ _____) )
+(_|______/ 
+           \n╰┈➤bloxflip-rain-notifier notifier!""", Style.RESET_ALL, flush=True)
 
 
 # notifier-config.json
@@ -66,4 +72,3 @@ while True:
         r = requests.post(webhook, json=data, verify=ssl)
         time.sleep(time_to_sleep)
     time.sleep(time_sleep_every_loop)
-              
