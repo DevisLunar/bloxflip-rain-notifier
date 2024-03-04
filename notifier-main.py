@@ -7,7 +7,7 @@ import http.client, requests, json, time
 from colorama import Fore, Style
 
 
-print(Fore.LIGHTBLACK_EX, "╰┈➤notifier started!", Style.RESET_ALL, flush=True)
+print(Fore.LIGHTRED_EX, "╰┈➤notifier started!", Style.RESET_ALL, flush=True)
 
 
 # notifier-config.json
@@ -16,7 +16,7 @@ try:
     config = json.load(f)
 except:
     print(Fore.LIGHTRED_EX, "╰┈➤Error while reading bytes!", Style.RESET_ALL, flush=True)
-        exit(0)
+    exit(0)
 f.close()
 
 
