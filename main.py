@@ -16,7 +16,7 @@ with open("notifier-config.json", "r") as f:
         print(Fore.LIGHTRED_EX, "╰┈➤[Error while reading bytes!]", Style.RESET_ALL, flush=True)
         exit(0)
 
-# keys
+# setup
 webhook = config['CONFIG']['WEBHOOK']
 time_sleep_every_loop = config['CONFIG']['SPEED']
 ping = config['CONFIG']['PING']
