@@ -1,4 +1,4 @@
-# BloxFlipNotifier 🌧️
+# bloxflip-rain-notifier 🌧️
 
 made_by = "kellyhated"
 
