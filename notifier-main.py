@@ -7,13 +7,13 @@ import http.client, requests, json, time
 from colorama import Fore, Style
 
 
-print(Fore.LIGHTCYAN_EX, """   ______  
+print(Fore.LIGHTRED_EX, f"""   ______  
   (_____ \ 
  _ _____) )
 (_|_____ ( 
  _ _____) )
 (_|______/ 
-           \n╰┈➤bloxflip-rain-notifier started!""", Style.RESET_ALL, flush=True)
+           \n|{time.strftime("%H:%M:%S")}|\n╰┈➤ bloxflip-rain-notifier started!""", Style.RESET_ALL, flush=True)
 
 
 # notifier-config.json & setup
@@ -21,7 +21,7 @@ f = open("notifier-config.json", "r")
 try:
     config = json.load(f)
 except:
-    print(Fore.LIGHTRED_EX, "╰┈➤Error while reading bytes!", Style.RESET_ALL, flush=True)
+    print(Fore.LIGHTBLACK_EX, f"|{time.strftime('%H:%M:%S')}|\n╰┈➤ error while reading bytes!", Style.RESET_ALL, flush=True)
     exit(0)
 f.close()
 
@@ -38,13 +38,13 @@ def active():
         "Content-Type": "application/x-www-form-urlencoded",
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/117.0.5938.108 Mobile/15E148 Safari/604.1"
     }
-    conn = http.client.HTTPSConnection("api.bloxflip.com")
+    conn = http.client.HTTPSConnection("api.bloxflip.com") if ssl else http.client.HTTPSConnection("api.bloxflip.com")
     conn.request("GET", "/chat/history", headers=headers)
     return json.loads(conn.getresponse().read().decode())['rain']
 
 
 # loop
-while True:
+while 1:
     rain = active()
     if rain['active']:
         add = rain['duration'] + rain['created']
@@ -67,6 +67,7 @@ while True:
             }
         ]
         # webhook send
-        r = requests.post(webhook, json=data, verify=ssl)
+        r = requests.post(webhook, json=data, verify=ssl).status_code
+        print(Fore.LIGHTRED_EX, f"|{time.strftime('%H:%M:%S')}|\n╰┈➤the message was sent!", Style.RESET_ALL, flush=True) if r == 200 else print(Fore.LIGHTBLACK_EX, f"|{time.strftime('%H:%M:%S')}|\n╰┈➤status code = {r}, error while requesting!", Style.RESET_ALL, flush=True)
         time.sleep(time_to_sleep)
     time.sleep(time_sleep_every_loop)
