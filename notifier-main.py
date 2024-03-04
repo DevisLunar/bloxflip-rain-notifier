@@ -5,22 +5,26 @@ made_by = "coxy.57"
 import http.client, requests, json, time
 from colorama import Fore, Style
 
-print(Fore.LIGHTBLACK_EX, "╰┈➤[Notifier started!]", Style.RESET_ALL, flush=True)
+
+print(Fore.LIGHTBLACK_EX, "╰┈➤notifier started!", Style.RESET_ALL, flush=True)
+
 
 # notifier-config.json
-with open("notifier-config.json", "r") as f:
-    try:
-        file = f.read()
-        config = json.loads(file)
-    except:
-        print(Fore.LIGHTRED_EX, "╰┈➤[Error while reading bytes!]", Style.RESET_ALL, flush=True)
+f = open("notifier-config.json", "r")
+try:
+    config = json.load(f)
+except:
+    print(Fore.LIGHTRED_EX, "╰┈➤Error while reading bytes!", Style.RESET_ALL, flush=True)
         exit(0)
+f.close()
+
 
 # setup
 webhook = config['CONFIG']['WEBHOOK']
 time_sleep_every_loop = config['CONFIG']['SPEED']
 ping = config['CONFIG']['PING']
 ssl = config['CONFIG']['SSL']
+
 
 def active():
     # headers & api.bloxflip.com conn
