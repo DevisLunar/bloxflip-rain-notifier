@@ -13,18 +13,20 @@ print(Fore.LIGHTRED_EX, f"""   ______
 (_|_____ ( 
  _ _____) )
 (_|______/ 
-           \n|{time.strftime("%H:%M:%S")}|\n╰┈➤ bloxflip-rain-notifier started!""", Style.RESET_ALL, flush=True)
+           \n{time.strftime("%H:%M:%S")}│\n╰┈➤ bloxflip-rain-notifier started!""", Style.RESET_ALL, flush=True)
 
 
-# notifier-config.json & setup
+# notifier-config.json
 f = open("notifier-config.json", "r")
 try:
     config = json.load(f)
 except:
-    print(Fore.LIGHTBLACK_EX, f"|{time.strftime('%H:%M:%S')}|\n╰┈➤ error while reading bytes!", Style.RESET_ALL, flush=True)
+    print(Fore.LIGHTBLACK_EX, f"{time.strftime('%H:%M:%S')}│\n╰┈➤ error while reading bytes!", Style.RESET_ALL, flush=True)
     exit(0)
 f.close()
 
+
+# setup
 webhook = config['CONFIG']['WEBHOOK']
 time_sleep_every_loop = config['CONFIG']['SPEED']
 ping = config['CONFIG']['PING']
@@ -68,6 +70,6 @@ while 1:
         ]
         # webhook send
         r = requests.post(webhook, json=data, verify=ssl).status_code
-        print(Fore.LIGHTRED_EX, f"|{time.strftime('%H:%M:%S')}|\n╰┈➤the message was sent!", Style.RESET_ALL, flush=True) if r == 200 else print(Fore.LIGHTBLACK_EX, f"|{time.strftime('%H:%M:%S')}|\n╰┈➤status code = {r}, non-200-response!", Style.RESET_ALL, flush=True)
+        print(Fore.LIGHTRED_EX, f"|{time.strftime('%H:%M:%S')}|\n╰┈➤the message was sent!", Style.RESET_ALL, flush=True) if r == 200 else print(Fore.LIGHTBLACK_EX, f"{time.strftime('%H:%M:%S')}│\n╰┈➤status code = {r}, non-200-response while requesting!", Style.RESET_ALL, flush=True)
         time.sleep(time_to_sleep)
     time.sleep(time_sleep_every_loop)
