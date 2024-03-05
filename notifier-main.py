@@ -68,6 +68,6 @@ while 1:
         ]
         # webhook send
         r = requests.post(webhook, json=data, verify=ssl).status_code
-        print(Fore.LIGHTRED_EX, f"|{time.strftime('%H:%M:%S')}|\n╰┈➤the message was sent!", Style.RESET_ALL, flush=True) if r == 200 else print(Fore.LIGHTBLACK_EX, f"|{time.strftime('%H:%M:%S')}|\n╰┈➤status code = {r}, error while requesting!", Style.RESET_ALL, flush=True)
+        print(Fore.LIGHTRED_EX, f"|{time.strftime('%H:%M:%S')}|\n╰┈➤the message was sent!", Style.RESET_ALL, flush=True) if r == 200 else print(Fore.LIGHTBLACK_EX, f"|{time.strftime('%H:%M:%S')}|\n╰┈➤status code = {r}, non-200-response!", Style.RESET_ALL, flush=True)
         time.sleep(time_to_sleep)
     time.sleep(time_sleep_every_loop)
