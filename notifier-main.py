@@ -11,7 +11,7 @@ requests.packages.urllib3.disable_warnings()
 
 
 # notifier-config.json
-f = open("config.json", "r")
+f = open("notifier-config.json", "r")
 try:
     data = json.load(f)
 except:
