@@ -4,7 +4,6 @@
 
 # modules
 import requests, subprocess, json
-from colorama import Fore, Style
 
 
 # open file
@@ -25,5 +24,5 @@ while 1:
     except Exception:
         pass
     process.kill()
-    print(Fore.LIGHTBLACK_EX, "restarting...", Style.RESET_ALL, flush=True)
+    print("restarting...", flush=True)
     continue
