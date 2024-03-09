@@ -7,14 +7,17 @@ import requests, subprocess, json
 from colorama import Fore, Style
 
 
+# open file
 f = open("restarter-config.json", "r")
 data = json.load(f)
 f.close()
 
 
+# setup
 minutes_per_restart = data['minutes']
 
 
+# loop
 while 1:
     process = subprocess.Popen(['python', 'notifier-main.py'])
     try:
