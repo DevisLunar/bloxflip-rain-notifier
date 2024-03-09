@@ -1,39 +1,35 @@
-made_by = "kellyhated"
 made_by = "coxy.57"
+made_by = "kellyhated"
 
 
-# modules
-import http.client, requests, json, time
-from colorama import Fore, Style
-
-
-requests.packages.urllib3.disable_warnings()
-
-
-# notifier-config.json
-f = open("notifier-config.json", "r")
+# try; except treatment with the ModuleNotFoundError class
 try:
-    data = json.load(f)
-except:
-    print(Fore.LIGHTBLACK_EX, f"☂{time.strftime('%H:%M:%S')}│\n╰┈➤ error while reading bytes!", Style.RESET_ALL, flush=True)
-    exit(0)
-f.close()
+    import http.client, requests, json, time, colorama
+except ModuleNotFoundError:
+    __import__("os").system("pip install requests colorama")
 
 
-# setup
-webhook = data['CONFIG']['WEBHOOK']
-time_sleep_every_loop = data['CONFIG']['SPEED']
-ping = data['CONFIG']['PING']
-ssl = data['CONFIG']['SSL']
-
-
-print(Fore.LIGHTRED_EX, f"""   ______  
+print(colorama.Fore.LIGHTRED_EX, f"""   ______  
   (_____ \ 
  _ _____) )
 (_|_____ ( 
  _ _____) )
 (_|______/ 
-           \n☂{time.strftime("%H:%M:%S")}│\n╰┈➤ bloxflip-rain-notifier started!""", Style.RESET_ALL, flush=True)
+           \n☂{time.strftime("%H:%M:%S")}│╰┈➤ bloxflip-rain-notifier started!""", colorama.Style.RESET_ALL, flush=True)
+
+
+# open file
+f = open("notifier-config.json", "r")
+config = json.load(f)
+f.close()
+
+
+# setup
+webhook = config['CONFIG']['WEBHOOK']
+time_sleep_every_loop = config['CONFIG']['SPEED']
+ping = config['CONFIG']['PING']
+ssl = config['CONFIG']['SSL']
+requests.packages.urllib3.disable_warnings()
 
 
 def active():
@@ -46,7 +42,6 @@ def active():
     conn = http.client.HTTPSConnection("api.bloxflip.com")
     conn.request("GET", "/chat/history", headers=headers)
     return json.loads(conn.getresponse().read().decode())['rain']
-
 
 # loop
 while 1:
@@ -64,8 +59,9 @@ while 1:
         }
         data["embeds"] = [
         {
-            "description" : f"A rain has been started!\n**Host**: {rain['host']}\n**Rain Amount**: {rain['prize']}\n**Expiration**: <t:{duration}:R>\n**Hop on [BloxFlip](https://bloxflip.com) to participate in this chat rain!**",
-            "title" : "Rain Notifier",
+            "description": f"A rain has been started!\n👥**Host**: {rain['host']}\n💸**Rain Amount**: {rain['prize']}\n⏳**Expiration**: <t:{duration}:R>\n🍂**Hop on [BloxFlip](https://bloxflip.com) to participate in this chat rain!**",
+            "title": "Rain Notifier",
+            "color": 0x00006B,
             "thumbnail": {
                 "url": requests.get(f"https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds={rblxid}&size=50x50&format=Png&isCircular=false", verify=ssl).json()['data'][0]['imageUrl']
                 }
@@ -73,6 +69,10 @@ while 1:
         ]
         # webhook send
         r = requests.post(webhook, json=data, verify=ssl).status_code
-        is_sent_verify = True, print(Fore.LIGHTRED_EX, f"☂{time.strftime('%H:%M:%S')}│\n╰┈➤the message was sent!", Style.RESET_ALL, flush=True) if r == 200 else False
+        time_var = time.strftime('%H:%M:%S')
+        is_sent = True, print(colorama.Fore.LIGHTRED_EX, f"☂{time_var}│╰┈➤the message was sent!", colorama.Style.RESET_ALL, flush=True) if 200 < r < 299 else False
+        # write log
+        with open("logs.json", "w") as w:
+            json.dump({"sent": is_sent[0], "time": time_var}, w)
         time.sleep(time_to_sleep)
     time.sleep(time_sleep_every_loop)
