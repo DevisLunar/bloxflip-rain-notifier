@@ -59,7 +59,7 @@ while 1:
         }
         data["embeds"] = [
         {
-            "description": f"A rain has been started!\n👥**Host**: {rain['host']}\n💸**Rain Amount**: {rain['prize']}\n⏳**Expiration**: <t:{duration}:R>\n🍂**Hop on [BloxFlip](https://bloxflip.com) to participate in this chat rain!**",
+            "description": f":cloud_rain:A rain has been started!\n👥**Host**: {rain['host']}\n💸**Rain Amount**: {rain['prize']}\n⏳**Expiration**: <t:{duration}:R>\n🍂**Hop on [BloxFlip](https://bloxflip.com) to participate in this chat rain!**",
             "title": "Rain Notifier",
             "color": 0x00006B,
             "thumbnail": {
