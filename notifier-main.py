@@ -75,6 +75,6 @@ while 1:
         with open("logs.json", "w") as logs:
             w = json.load(logs)
             w.append({"sent": is_sent[0], "time": time_var, "host": rain['host'], prize: str(rain['prize'])})
-            json.dump(w, w, indent=4)
+            json.dump(w, logs, indent=4)
         time.sleep(time_to_sleep)
     time.sleep(time_sleep_every_loop)
