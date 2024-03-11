@@ -59,7 +59,7 @@ while 1:
         }
         data["embeds"] = [
         {
-            "description": f":cloud_rain:A rain has been started!\n👥**Host**: {rain['host']}\n💸**Rain Amount**: {rain['prize']}\n⏳**Expiration**: <t:{duration}:R>\n🍂**Hop on [BloxFlip](https://bloxflip.com) to participate in this chat rain!**",
+            "description": f"A rain has been started!\n👥**Host**: {rain['host']}\n💸**Rain Amount**: {rain['prize']}\n⏳**Expiration**: <t:{duration}:R>\n🍂**Hop on [BloxFlip](https://bloxflip.com) to participate in this chat rain!**",
             "title": "Rain Notifier",
             "color": 0x00006B,
             "thumbnail": {
@@ -70,9 +70,11 @@ while 1:
         # webhook send
         r = requests.post(webhook, json=data, verify=ssl).status_code
         time_var = time.strftime('%H:%M:%S')
-        is_sent = True, print(colorama.Fore.LIGHTRED_EX, f"☂{time_var}│╰┈➤the message was sent!", colorama.Style.RESET_ALL, flush=True) if 200 < r < 299 else False
-        # write log
-        with open("logs.json", "w") as w:
-            json.dump({"sent": is_sent[0], "time": time_var}, w)
+        is_sent = True, print(colorama.Fore.LIGHTRED_EX, f"☂{time_var}│╰┈➤the message was sent!", colorama.Style.RESET_ALL, flush=True) if 200 < r < 300 else False
+        # open file & write log
+        with open("logs.json", "w") as logs:
+            w = json.load(logs)
+            w.append({"sent": is_sent[0], "time": time_var, "host": rain['host'], prize: str(rain['prize'])})
+            json.dump(w, w, indent=4)
         time.sleep(time_to_sleep)
     time.sleep(time_sleep_every_loop)
