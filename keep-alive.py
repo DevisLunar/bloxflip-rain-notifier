@@ -21,7 +21,7 @@ while 1:
     process = subprocess.Popen(['python', 'notifier-main.py'])
     try:
         process.wait(minutes_per_restart * 60)
-    except Exception:
+    except:
         pass
     process.kill()
     print("restarting...", flush=True)
