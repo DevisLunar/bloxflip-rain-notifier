@@ -72,7 +72,7 @@ while 1:
         time_var = time.strftime('%H:%M:%S')
         is_sent = True, print(colorama.Fore.LIGHTRED_EX, f"☂{time_var}│╰┈➤the message was sent!", colorama.Style.RESET_ALL, flush=True) if 200 < r < 300 else False
         # open file & write log
-        with open("logs.json", "w") as logs:
+        with open("logs.json", "r+") as logs:
             w = json.load(logs)
             w.append({"sent": is_sent[0], "time": time_var, "host": rain['host'], prize: str(rain['prize'])})
             json.dump(w, logs, indent=4)
