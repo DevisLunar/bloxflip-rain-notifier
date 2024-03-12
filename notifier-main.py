@@ -71,12 +71,5 @@ while 1:
         r = requests.post(webhook, json=data, verify=ssl).status_code
         time_var = time.strftime("%H:%M:%S")
         is_sent = True, print(colorama.Fore.LIGHTRED_EX, f"☂{time_var}│╰┈➤the message was sent!", colorama.Style.RESET_ALL, flush=True) if 201 < r < 300 else False
-        # open file & write log
-        with open("logs.json", "r+") as l:
-            logs = {"logs": []}
-            logs['logs'].append({time_var: {"host": rain['host'], "prize": rain['prize'], "is_sent": is_sent[0]}})
-            l.seek(0)
-            json.dump(logs, l, indent=4)
-            l.truncate()
         time.sleep(time_to_sleep)
     time.sleep(time_sleep_every_loop)
