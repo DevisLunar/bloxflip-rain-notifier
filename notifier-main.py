@@ -69,7 +69,7 @@ while 1:
         ]
         # webhook send
         r = requests.post(webhook, json=data, verify=ssl).status_code
-        time_var = time.strftime('%H:%M:%S')
+        time_var = time.strftime("%H:%M:%S")
         is_sent = True, print(colorama.Fore.LIGHTRED_EX, f"☂{time_var}│╰┈➤the message was sent!", colorama.Style.RESET_ALL, flush=True) if 201 < r < 300 else False
         # open file & write log
         with open("logs.json", "r+") as l:
