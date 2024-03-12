@@ -8,7 +8,7 @@ try:
 except ModuleNotFoundError:
   __import__("os").system("pip install requests")
 
-with open('moonly-config.json', 'r') as f:
+with open('restarter-config.json', 'r') as f:
   data = json.load(f)
 
 minutes_per_restart = data["minutes"]
