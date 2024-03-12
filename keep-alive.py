@@ -1,9 +1,12 @@
 # RESTARTER BY Revive#8798
 # WEBHOOK AND JSON SUPPORT BY Moonly#7996
 
-import requests
-import subprocess
-import json
+try:
+  import requests
+  import subprocess
+  import json
+except ModuleNotFoundError:
+  __import__("os").system("pip install requests")
 
 with open('moonly-config.json', 'r') as f:
   data = json.load(f)
