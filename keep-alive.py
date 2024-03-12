@@ -1,28 +1,24 @@
 # RESTARTER BY Revive#8798
 # WEBHOOK AND JSON SUPPORT BY Moonly#7996
 
+import requests
+import subprocess
+import json
 
-# modules
-import requests, subprocess, json
+with open('moonly-config.json', 'r') as f:
+  data = json.load(f)
 
+minutes_per_restart = data["minutes"]
 
-# open file
-f = open("restarter-config.json", "r")
-data = json.load(f)
-f.close()
-
-
-# setup
-minutes_per_restart = data['minutes']
-
-
-# loop
-while 1:
+while True:
     process = subprocess.Popen(['python', 'notifier-main.py'])
     try:
         process.wait(minutes_per_restart * 60)
-    except:
+    except KeyboardInterrupt:
+        print("Exiting")
+        break
+    except Exception:
         pass
     process.kill()
-    print("restarting...", flush=True)
+    print("Restarting")
     continue
