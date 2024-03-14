@@ -69,6 +69,6 @@ while 1:
         ]
         # webhook send
         r = requests.post(webhook, json=data, verify=ssl).status_code
-        is_sent = True, print(colorama.Fore.LIGHTRED_EX, f"☂{time.strftime("%H:%M:%S")}│╰┈➤the message was sent!", colorama.Style.RESET_ALL, flush=True) if 201 < r < 300 else False
+        is_sent = True, print(colorama.Fore.LIGHTRED_EX, f"☂{time.strftime('%H:%M:%S')}│╰┈➤the message was sent!", colorama.Style.RESET_ALL, flush=True) if 201 < r < 300 else False
         time.sleep(time_to_sleep)
     time.sleep(time_sleep_every_loop)
