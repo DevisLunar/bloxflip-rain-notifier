@@ -1,6 +1,7 @@
 # RESTARTER BY Revive#8798
 # WEBHOOK AND JSON SUPPORT BY Moonly#7996
 
+
 try:
   import requests
   import subprocess
@@ -8,10 +9,13 @@ try:
 except ModuleNotFoundError:
   __import__("os").system("pip install requests")
 
-with open('restarter-config.json', 'r') as f:
+
+with open("restarter-config.json", "r") as f:
   data = json.load(f)
 
-minutes_per_restart = data["minutes"]
+
+minutes_per_restart = data['minutes']
+
 
 while True:
     process = subprocess.Popen(['python', 'notifier-main.py'])
