@@ -1,3 +1,3 @@
 # bloxflip-rain-notifier 🌧️
 
-made_by = "coxy.57", "kellyhated"
+made by coxy.57 and kellyhated
