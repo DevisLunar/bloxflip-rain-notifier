@@ -20,15 +20,15 @@ print(colorama.Fore.LIGHTRED_EX, f"""   ______
 
 # open file
 f = open("notifier-config.json", "r")
-config = json.load(f)
+data = json.load(f)
 f.close()
 
 
 # setup
-webhook = config['CONFIG']['WEBHOOK']
-time_sleep_every_loop = config['CONFIG']['SPEED']
-ping = config['CONFIG']['PING']
-ssl = config['CONFIG']['SSL']
+webhook = data['CONFIG']['WEBHOOK']
+time_sleep_every_loop = data['CONFIG']['SPEED']
+ping = data['CONFIG']['PING']
+ssl = data['CONFIG']['SSL']
 requests.packages.urllib3.disable_warnings()
 
 
